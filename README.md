@@ -5,7 +5,7 @@
 
 ## 스크린샷
 게임의 스크린샷을 여기에 추가하세요.
-![스크린샷](https://github.com/your-repo/game/blob/main/assets/screenshot.png)
+![스크린샷](https://github.com/JunhoLee92/23_2Project/blob/main/Assets/ScreenShot/1703078098_19832889.png)
 
 ## 동영상
 게임 플레이 데모 동영상입니다.
@@ -35,3 +35,16 @@ npm install
 
 # 게임 실행
 npm start
+
+
+## 참여인원
+
+- 기획 양진영
+- 서브기획 권상헌
+- 프로그래밍 이준호
+- 아트디렉터 이승록
+- 캐릭터 일러스트 서현우
+- 캐릭터 심볼 신예림
+- 배경 이소원
+- UI/UX 홍정기
+- 적대적 몬스터 디자인 김준혁
