@@ -43,18 +43,6 @@
 
 ## 설치 방법
 
-
-```bash
-# 게임 클론
-
-
-# 프로젝트 폴더로 이동
-cd game
-
-# 필수 패키지 설치
-npm install
-
-# 게임 실행
-npm start
+- Contributing.md 파일 참조
 
 
