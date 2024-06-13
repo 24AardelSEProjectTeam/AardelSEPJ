@@ -1,6 +1,6 @@
 # Aardel
 
-## 소개
+## :ribbon: 소개
 
 2D 병합 타워 디펜스 입니다. 아기자기한 캐릭터들을 배치하여 적을 막아보세요.
 ![스크린샷](https://github.com/JunhoLee92/23_2Project/blob/main/Assets/ScreenShot/1703078098_19832889.png)
