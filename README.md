@@ -42,6 +42,8 @@
 - 몬스터 웨이브 라운드
 - 보스 라운드
 
+![기능 설명](Assets/ScreenShot/Screenshot_funtion.png)
+
 ## :game_die: 핵심 기능
 
 - 캐릭터 병합 시스템
