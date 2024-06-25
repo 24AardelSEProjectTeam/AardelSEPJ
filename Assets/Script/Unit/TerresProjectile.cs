@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerresProjectile : MonoBehaviour
 {
-    public float speed=10;       // Speed of the projectile
+    public float speed = 10;       // Speed of the projectile
     public GameObject target;     // Target monster
     public float damage;    // Damage dealt by the projectile
     public bool isCharged = false;
@@ -15,10 +15,10 @@ public class TerresProjectile : MonoBehaviour
             Destroy(gameObject);  // Destroy the projectile if the target is null
             return;
         }
-       
+
         Vector3 direction = (target.transform.position - transform.position).normalized;
 
-        
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 180;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
@@ -33,7 +33,7 @@ public class TerresProjectile : MonoBehaviour
             {
                 HitTarget();
             }
-            else if (isCharged==true)
+            else if (isCharged == true)
             {
                 ChargedTarget();
             }
@@ -55,7 +55,7 @@ public class TerresProjectile : MonoBehaviour
         IDamageable damageableEntity = target.GetComponent<IDamageable>();
         if (damageableEntity != null)
         {
-            damageableEntity.TakeDamage(damage*1.3f);
+            damageableEntity.TakeDamage(damage * 1.3f);
             Debug.Log("ChargedAttack");
         }
         Destroy(gameObject);

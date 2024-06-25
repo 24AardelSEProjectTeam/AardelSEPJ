@@ -610,18 +610,18 @@ public class GameManager : MonoBehaviour
                 if (unit != null && unit.isAire == true && unit.unitLevel >= 1)
                 {
                     contiguousAires.Add(index);
-                   
+
                 }
                 else
                 {
                     if (contiguousAires.Count >= 2)
                     {
                         StrengthenUnitsBetweenAires(contiguousAires, group);
-                        
+
                         contiguousAires.Clear();
                     }
 
-                   
+
                 }
             }
 
@@ -629,7 +629,7 @@ public class GameManager : MonoBehaviour
             if (contiguousAires.Count >= 2)
             {
                 StrengthenUnitsBetweenAires(contiguousAires, group);
-               
+
             }
         }
     }

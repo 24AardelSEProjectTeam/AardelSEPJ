@@ -6,11 +6,11 @@ using static UnityEngine.GraphicsBuffer;
 public class Aire : MonoBehaviour
 {
     public float attackDamage = 7f;
-   
-    
-   
+
+
+
     private Unit unitScript;
-    
+
 
 
     public static bool isSpecialA = false;
@@ -28,9 +28,9 @@ public class Aire : MonoBehaviour
         if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged += UpdateDamage;
-            
+
             attackDamage = unitScript.AttackPower; // Initialize with current attack damage
-           
+
             Debug.Log("Subscribed to OnAttackDamageChanged");
         }
 
@@ -78,19 +78,19 @@ public class Aire : MonoBehaviour
         Debug.Log("UPdateDamageAire" + attackDamage);
     }
 
-   
+
 
     void OnDestroy()
     {
         if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged -= UpdateDamage;
-            
+
 
         }
     }
 
-  
+
 
     public void SpecialA()
     {

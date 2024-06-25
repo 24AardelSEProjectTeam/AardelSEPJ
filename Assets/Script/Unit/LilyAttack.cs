@@ -9,7 +9,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class LilyAttack : MonoBehaviour
 {
 
-  
+
 
 
     public GameObject laserPrefab;
@@ -22,18 +22,18 @@ public class LilyAttack : MonoBehaviour
     public float attackSpeed;
     private bool isPrestige = false;
 
-     public static bool isSpecialA=false;
+    public static bool isSpecialA = false;
 
-   public static bool isSpecialB=false;
+    public static bool isSpecialB = false;
 
-    bool isBoolA=false;
-    bool isBoolB=false;
+    bool isBoolA = false;
+    bool isBoolB = false;
 
-     private int MaxPoisonStacks=3;
+    private int MaxPoisonStacks = 3;
 
     private void Start()
     {
-        if (GameManager.Instance.unitEvolutionData[2].isPrestige==true)
+        if (GameManager.Instance.unitEvolutionData[2].isPrestige == true)
         {
             Debug.Log("LilyPrestige");
             isPrestige = true;
@@ -41,58 +41,58 @@ public class LilyAttack : MonoBehaviour
         }
         unitScript = GetComponent<Unit>();
 
-          if (unitScript != null)
+        if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged += UpdateDamage;
             unitScript.OnAttackSpeedChanged += UpdateSpeed;
             attackDamage = unitScript.AttackPower; // Initialize with current attack damage
-            attackSpeed =unitScript.AttackSpeed;
+            attackSpeed = unitScript.AttackSpeed;
             Debug.Log("Subscribed to OnAttackDamageChanged");
         }
-    
 
-        attackDamage=unitScript.attackPower;
+
+        attackDamage = unitScript.attackPower;
         // Start the laser attack loop
         laserAttackCoroutine = StartCoroutine(LaserAttackLoop());
 
         //  if (unitScript.unitLevel == 1)
         //         {
         //             poisonDamagePercentage = 0.05f;
-                      
+
         //         }
         //         else if (unitScript.unitLevel == 3)
         //         {
         //             poisonDamagePercentage = 0.1f;
-                    
+
         //         }
         //         else if (unitScript.unitLevel == 5)
         //         {
         //             poisonDamagePercentage = 0.20f;
         //             MaxPoisonStacks+=2;
-                    
+
         //         }
 
-        
-        
-        if(isSpecialA && unitScript.unitLevel>=3)
+
+
+        if (isSpecialA && unitScript.unitLevel >= 3)
         {
             SpecialA();
-            isBoolA=true;
+            isBoolA = true;
         }
 
-        if(isSpecialA && unitScript.unitLevel==5)
+        if (isSpecialA && unitScript.unitLevel == 5)
         {
             SpecialB();
-            isBoolB=true;
+            isBoolB = true;
         }
-                
+
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q)) //for special reward test
+        if (Input.GetKeyDown(KeyCode.Q)) //for special reward test
         {
-            isSpecialA=true;
+            isSpecialA = true;
             Debug.Log("special");
 
         }
@@ -103,11 +103,11 @@ public class LilyAttack : MonoBehaviour
         {
             StopCoroutine(laserAttackCoroutine);
         }
-           if (unitScript != null)
+        if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged -= UpdateDamage;
             unitScript.OnAttackSpeedChanged -= UpdateSpeed;
-            
+
         }
     }
 
@@ -129,7 +129,7 @@ public class LilyAttack : MonoBehaviour
         }
     }
 
-    
+
 
     void ShootLaser(GameObject target)
     {
@@ -143,11 +143,11 @@ public class LilyAttack : MonoBehaviour
         {
             StartCoroutine(DealDamageWithDelay(target, 0.3f));
         }
-        else if(isPrestige==true)
+        else if (isPrestige == true)
         {
             StartCoroutine(DealDamageWithDelayPrestige(target, 0.3f));
         }
-        Destroy(laser,0.3f);
+        Destroy(laser, 0.3f);
     }
 
     IEnumerator DealDamageWithDelay(GameObject target, float delay)
@@ -158,28 +158,28 @@ public class LilyAttack : MonoBehaviour
         {
             yield break;  // Exit the coroutine if the target is destroyed
         }
-      
-        if(!isBoolA&&isSpecialA&&unitScript.unitLevel>=3)
-      {
-        Debug.Log("SpecialA");
-        SpecialA();
-        isBoolA=true;
-      }
 
-       if(!isBoolB&&isSpecialB&&unitScript.unitLevel==5)
-      {
-        Debug.Log("SpecialB");
-        SpecialB();
-        isBoolA=true;
-      }
+        if (!isBoolA && isSpecialA && unitScript.unitLevel >= 3)
+        {
+            Debug.Log("SpecialA");
+            SpecialA();
+            isBoolA = true;
+        }
 
-        Debug.Log("독스택"+poisonDamagePercentage);
+        if (!isBoolB && isSpecialB && unitScript.unitLevel == 5)
+        {
+            Debug.Log("SpecialB");
+            SpecialB();
+            isBoolA = true;
+        }
+
+        Debug.Log("독스택" + poisonDamagePercentage);
         IDamageable damageableEntity = target.GetComponent<IDamageable>();
         if (damageableEntity != null)
         {
-            
-            
-               
+
+
+
 
             damageableEntity.MaxPoisonStacks = MaxPoisonStacks;
 
@@ -196,13 +196,13 @@ public class LilyAttack : MonoBehaviour
         {
             yield break;  // Exit the coroutine if the target is destroyed
         }
-            
+
         IDamageable damageableEntity = target.GetComponent<IDamageable>();
         if (damageableEntity != null)
         {
-           
+
             damageableEntity.TakeDamage(attackDamage);
-            damageableEntity.EnhancedPoisonStack(poisonDamagePercentage,attackDamage);
+            damageableEntity.EnhancedPoisonStack(poisonDamagePercentage, attackDamage);
         }
     }
     GameObject FindClosestMonster()
@@ -214,7 +214,7 @@ public class LilyAttack : MonoBehaviour
         foreach (GameObject monster in monsters)
         {
             float curDistance = Vector2.Distance(transform.position, monster.transform.position);
-            if (curDistance < distance && curDistance<=attackRange)
+            if (curDistance < distance && curDistance <= attackRange)
             {
                 closest = monster;
                 distance = curDistance;
@@ -227,34 +227,34 @@ public class LilyAttack : MonoBehaviour
     {
         attackDamage = newDamage;
         // Additional logic to handle damage change
-        Debug.Log("UPdateDamageKali"+attackDamage);
+        Debug.Log("UPdateDamageKali" + attackDamage);
     }
 
     private void UpdateSpeed(float newSpeed)
     {
         Debug.Log($"Before increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
-    // Logic to increase AttackSpeed
-        attackSpeed=newSpeed;
-         Debug.Log("UPdateSpeedKali"+attackSpeed);
+        // Logic to increase AttackSpeed
+        attackSpeed = newSpeed;
+        Debug.Log("UPdateSpeedKali" + attackSpeed);
 
-           Debug.Log($"After increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
+        Debug.Log($"After increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
 
     }
 
-  
+
 
     public void SpecialA()
-    {  
-            poisonDamagePercentage+=0.05f;
-         
+    {
+        poisonDamagePercentage += 0.05f;
+
     }
 
     public void SpecialB()
     {
-        
-            poisonDamagePercentage+=0.1f;
-            MaxPoisonStacks+=2;
-        
+
+        poisonDamagePercentage += 0.1f;
+        MaxPoisonStacks += 2;
+
     }
 }
 

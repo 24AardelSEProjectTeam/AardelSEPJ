@@ -6,11 +6,11 @@ using UnityEngine;
 public class Shuffle : MonoBehaviour
 {
     // Start is called before the first frame update
-   public void onClick()
+    public void onClick()
     {
-        if(GameManager.Instance.isMonsterSpawning==false)
+        if (GameManager.Instance.isMonsterSpawning == false)
         {
-        GameManager.Instance.Shuffle();
+            GameManager.Instance.Shuffle();
         }
         else
         {

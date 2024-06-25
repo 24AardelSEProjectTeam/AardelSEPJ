@@ -9,7 +9,7 @@ public class Squad_Data : MonoBehaviour
 
     public UnitEvolutionData[] unitEvolutionData;
 
-    public List<string> selectedUnitNames = new List<string>(); 
+    public List<string> selectedUnitNames = new List<string>();
     private void Awake()
     {
         if (Instance == null)
@@ -25,7 +25,7 @@ public class Squad_Data : MonoBehaviour
 
 
 
-  
+
 
     //public void ToggleChecked(string unitName)
     //{

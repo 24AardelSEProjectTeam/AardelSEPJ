@@ -20,20 +20,21 @@ public class LookAtCenter : MonoBehaviour
 
         // Set initial rotation to look at the center
         Vector2 directionToTarget = target.position - transform.position;
-        if(this.gameObject.name.Contains("Ch1"))
-        {   this.transform.rotation = Quaternion.Euler(0, 0, -90);
-            float initialAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg-180;
+        if (this.gameObject.name.Contains("Ch1"))
+        {
+            this.transform.rotation = Quaternion.Euler(0, 0, -90);
+            float initialAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg - 180;
             transform.rotation = Quaternion.Euler(0, 0, initialAngle);
             Debug.Log("A");
-    
+
         }
         else
         {
-        float initialAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg - 90;
-           transform.rotation = Quaternion.Euler(0, 0, initialAngle);
-           Debug.Log("B");
+            float initialAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.Euler(0, 0, initialAngle);
+            Debug.Log("B");
         }
-        
+
     }
     // Update is called once per frame
     void Update()
@@ -44,17 +45,17 @@ public class LookAtCenter : MonoBehaviour
         directionToTarget.Normalize();
 
         // Calculate the desired rotation angle
-        if(this.gameObject.name.Contains("Ch1"))
+        if (this.gameObject.name.Contains("Ch1"))
         {
-           angle=180;
+            angle = 180;
         }
 
         else
         {
-            angle=90;
+            angle = 90;
         }
         float desiredAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg - angle;
-        
+
 
         // Calculate the desired rotation
         Quaternion desiredRotation = Quaternion.Euler(0, 0, desiredAngle);

@@ -15,34 +15,34 @@ public class PrestigeTextCanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void TextUpdate()
     {
-       if( GameManager.Instance.unitEvolutionData[0].isPrestige == true)
+        if (GameManager.Instance.unitEvolutionData[0].isPrestige == true)
         {
-            prestigeText.text = "Ä®¸®ÀÇ °ø°Ý¼Óµµ 50% Áõ°¡";
+            prestigeText.text = "Ä®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¼Óµï¿½ 50% ï¿½ï¿½ï¿½ï¿½";
         }
         else if (GameManager.Instance.unitEvolutionData[1].isPrestige == true)
         {
-            prestigeText.text = "±¤¿ª ÆÐ½Ãºê: ¿þÀÌºê Áß 10ÃÊ¸¶´Ù <´«º¸¶ó> È¿°ú·Î Àû ÀüÃ¼ 100%È®·ü·Î 1ÃÊ°£ °á¹Ú";
+            prestigeText.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½Ãºï¿½: ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ 10ï¿½Ê¸ï¿½ï¿½ï¿½ <ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½> È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¼ 100%È®ï¿½ï¿½ï¿½ï¿½ 1ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½";
         }
         else if (GameManager.Instance.unitEvolutionData[2].isPrestige == true)
         {
-            prestigeText.text = "´Üµ¶ ÆÐ½Ãºê: Àû¿¡°Ô ¸íÁß ÈÄ 1ÃÊ¸¶´Ù µµÆ® µ¥¹ÌÁö 1%¾¿ Áõ°¡(ÃÖ´ë 10%)";
+            prestigeText.text = "ï¿½Üµï¿½ ï¿½Ð½Ãºï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 1ï¿½Ê¸ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1%ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½Ö´ï¿½ 10%)";
         }
-       else if (GameManager.Instance.unitEvolutionData[3].isPrestige == true)
+        else if (GameManager.Instance.unitEvolutionData[3].isPrestige == true)
         {
-            prestigeText.text = "´Üµ¶ ÆÐ½Ãºê: 0´Ü°è ¾ÆÀÌ¸£ À¯´Öµµ <Ãàº¹> ½ºÅ³ÀÇ È¿°ú¸¦ ¹ßÈÖ";
+            prestigeText.text = "ï¿½Üµï¿½ ï¿½Ð½Ãºï¿½: 0ï¿½Ü°ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Öµï¿½ <ï¿½àº¹> ï¿½ï¿½Å³ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½";
         }
-       else if (GameManager.Instance.unitEvolutionData[4].isPrestige == true)
+        else if (GameManager.Instance.unitEvolutionData[4].isPrestige == true)
         {
-            prestigeText.text = "´Üµ¶ ÆÐ½Ãºê: °­°ø°Ý È®·üÀÌ 50%·Î Áõ°¡ÇÑ´Ù. (20%Áõ°¡)";
+            prestigeText.text = "ï¿½Üµï¿½ ï¿½Ð½Ãºï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ 50%ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. (20%ï¿½ï¿½ï¿½ï¿½)";
         }
-      else if (GameManager.Instance.unitEvolutionData[5].isPrestige == true)
+        else if (GameManager.Instance.unitEvolutionData[5].isPrestige == true)
         {
-            prestigeText.text = "´Üµ¶ ÆÐ½Ãºê: °¡Àå ´Ü°è°¡ ³ôÀº º§¶ó À¯´Ö 1±âÀÇ °ø°Ý·Â 10% Áõ°¡";
+            prestigeText.text = "ï¿½Üµï¿½ ï¿½Ð½Ãºï¿½: ï¿½ï¿½ï¿½ï¿½ ï¿½Ü°è°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½ 10% ï¿½ï¿½ï¿½ï¿½";
         };
 
     }

@@ -11,30 +11,30 @@ public class Victory : MonoBehaviour
 
 
     public void DisableUIExceptVictory()
-{
-    foreach (Transform child in uiCanvas.transform)
     {
-       
+        foreach (Transform child in uiCanvas.transform)
+        {
+
             child.gameObject.SetActive(false);
-       
+
+        }
     }
-}
 
-public void VictoryOn()
-{
-    DisableUIExceptVictory();
-    victory.SetActive(true);
-    backgroundOverlay.SetActive(true);
-    
+    public void VictoryOn()
+    {
+        DisableUIExceptVictory();
+        victory.SetActive(true);
+        backgroundOverlay.SetActive(true);
 
-}
 
-public void DefeatOn()
-{
-    DisableUIExceptVictory();
-    defaeat.SetActive(true);
-    backgroundOverlay.SetActive(true);
-    
-}
+    }
+
+    public void DefeatOn()
+    {
+        DisableUIExceptVictory();
+        defaeat.SetActive(true);
+        backgroundOverlay.SetActive(true);
+
+    }
 
 }

@@ -15,8 +15,8 @@ public class BellaPrestige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-      
+
+
     }
 
     public BellaAttack[] FindAllBellas()
@@ -24,7 +24,7 @@ public class BellaPrestige : MonoBehaviour
         return FindObjectsOfType<BellaAttack>();
     }
 
-   public void UpdateStrongestBella()
+    public void UpdateStrongestBella()
     {
         BellaAttack[] allBellas = FindObjectsOfType<BellaAttack>();
         BellaAttack strongestBella = null;

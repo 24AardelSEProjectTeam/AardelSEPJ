@@ -10,7 +10,7 @@ public class UnitEvolutionData
     public string unitName;
     public int maxLevel = 5;
     public GameObject[] unitPrefabs;
-    public bool isChecked; 
+    public bool isChecked;
     public bool isPrestige;
     public Sprite thumbnailSprite;
     public Sprite standingSprite;

@@ -139,7 +139,7 @@ public class Unit : MonoBehaviour
         float AireDamage = GameManager.Instance.unitEvolutionData[3].damage;
         Debug.Log("AireD" + AireDamage);
         tempAttackPower = AttackPower;
-        AttackPower =AttackPower + AireDamage;
+        AttackPower = AttackPower + AireDamage;
         Debug.Log(attackPower);
     }
 
@@ -169,9 +169,9 @@ public class Unit : MonoBehaviour
         if (isLaserSkillActive)
         {
             AireDamageDown();
-           
+
             PowerUp = false;
-           
+
             isLaserSkillActive = false;
 
         }
@@ -179,10 +179,10 @@ public class Unit : MonoBehaviour
 
     public void ActiveAireEffect()
     {
-       
-            instantiateAireEffect = Instantiate(aireEffect, transform.position, Quaternion.identity);
-           
-      
+
+        instantiateAireEffect = Instantiate(aireEffect, transform.position, Quaternion.identity);
+
+
     }
 
 

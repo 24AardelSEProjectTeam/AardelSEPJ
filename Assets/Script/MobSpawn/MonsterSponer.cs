@@ -7,7 +7,7 @@ using static GameManager;
 public class MonsterSponer : MonoBehaviour
 {
 
-   
+
     public float spawnRadius = 10f;
     public float spawnInterval;
     public int monstersPerSpawn;
@@ -18,7 +18,7 @@ public class MonsterSponer : MonoBehaviour
     private GameManager gameManager;
     public int totalSpawnedCount = 0;
     public int currentMonsters = 0;
-   
+
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -26,7 +26,7 @@ public class MonsterSponer : MonoBehaviour
 
     void Update()
     {
-        
+
         if (spawnStarted && Time.time >= nextSpawnTime)
         {
             RoundConfig currentConfig = gameManager.GetCurrentRoundConfig();
@@ -53,7 +53,7 @@ public class MonsterSponer : MonoBehaviour
 
     void SpawnMonster(MonsterSpawnInfo spawnInfo)
     {
-        
+
         // Calculate the boundaries of the screen in world coordinates
         float topBoundary = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height, 0)).y;
         float leftBoundary = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).x;
@@ -86,12 +86,12 @@ public class MonsterSponer : MonoBehaviour
         spawnedMonster.GetComponent<MonsterController>().Hp = spawnInfo.Hp;
         spawnedMonster.GetComponent<MonsterController>().speed = spawnInfo.speed;
         gameManager.OnMonsterSpawned();
-        
+
     }
     MonsterSpawnInfo GetNextSpawnInfo(RoundConfig config)
     {
         List<MonsterSpawnInfo> availableSpawnInfos = new List<MonsterSpawnInfo>();
-        
+
         // Gather all available spawn infos
         foreach (MonsterSpawnInfo spawnInfo in config.spawnInfos)
         {

@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
-    
+
     public GameObject panel;
     public GameObject backgroundPanel;
 
     public void TogglePause()
     {
-      
 
-        if(panel.activeSelf)
+
+        if (panel.activeSelf)
         {
             panel.SetActive(false);
             backgroundPanel.SetActive(false);
             Time.timeScale = 1;
 
-            if(GameManager.Instance!=null)
+            if (GameManager.Instance != null)
             {
 
-            GameManager.Instance.isGamePaused = false;
-            
+                GameManager.Instance.isGamePaused = false;
+
             }
         }
         else
@@ -31,10 +31,10 @@ public class PauseManager : MonoBehaviour
             backgroundPanel.SetActive(true);
             Time.timeScale = 0;
 
-          if(GameManager.Instance!=null)
+            if (GameManager.Instance != null)
             {
 
-            GameManager.Instance.isGamePaused = false;
+                GameManager.Instance.isGamePaused = false;
             }
         }
     }

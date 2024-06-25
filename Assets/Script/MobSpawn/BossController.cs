@@ -4,21 +4,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BossController : MonoBehaviour,IDamageable
+public class BossController : MonoBehaviour, IDamageable
 {
-    
+
 
     public int AttackPower;
     public bool IsAlive { get; private set; } = true;
     public float maxHealth;
     public float attackPreparationTime = 5f;
-   
+
 
     private float currentHealth;
     public float Phase2Hp;
     public float Phase3Hp;
     private int currentPhase = 1;
-    private float phaseHealthLimit;  
+    private float phaseHealthLimit;
     private float attackTimer;
     SpriteRenderer spriteRenderer;
     BossSpawner bossSpawner;
@@ -30,7 +30,7 @@ public class BossController : MonoBehaviour,IDamageable
     private Animator animator;
 
     private Vector2 frontBossPosition;
-   
+
     public GameObject victory;
     private void Start()
     {
@@ -39,14 +39,14 @@ public class BossController : MonoBehaviour,IDamageable
         {
             currentHealth = maxHealth;
         }
-        phaseHealthLimit = maxHealth/3;
+        phaseHealthLimit = maxHealth / 3;
         attackTimer = attackPreparationTime;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-        
+
     }
-  
+
 
     private void Update()
     {
@@ -82,9 +82,9 @@ public class BossController : MonoBehaviour,IDamageable
         currentHealth -= damage;
         Debug.Log(currentHealth);
 
-        if (currentHealth<=0 || attackTimer <= 0)
+        if (currentHealth <= 0 || attackTimer <= 0)
         {
-            if (currentPhase == 1 )
+            if (currentPhase == 1)
             {
                 NextPhase();
                 currentHealth = Phase2Hp;
@@ -94,7 +94,7 @@ public class BossController : MonoBehaviour,IDamageable
                 NextPhase();
                 currentHealth = Phase3Hp;
             }
-            else if (currentPhase==3) 
+            else if (currentPhase == 3)
             {
                 NextPhase();
             }
@@ -110,27 +110,27 @@ public class BossController : MonoBehaviour,IDamageable
         bossSpawner = GetComponent<BossSpawner>();
         currentPhase++;
 
-        
+
         switch (currentPhase)
         {
             case 1: break;
 
             case 2:
-                  if (SceneManager.GetActiveScene().name.Contains("InGame"))
-                  {
-                Debug.Log("Phase2");
-                transform.position = new Vector3(8f, 0f, 0);
-                spriteRenderer.flipX = false; // Flip to face right
-                spriteRenderer.flipY = false;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-                } // Reset rotation
-                else  if (SceneManager.GetActiveScene().name.Contains("Chapter1"))
+                if (SceneManager.GetActiveScene().name.Contains("InGame"))
                 {
                     Debug.Log("Phase2");
-                transform.position = new Vector3(7f, 0f, 0);
-                spriteRenderer.flipX = true; // Flip to face right
-                spriteRenderer.flipY = false;
-                transform.rotation = Quaternion.Euler(0, 0, 0);
+                    transform.position = new Vector3(8f, 0f, 0);
+                    spriteRenderer.flipX = false; // Flip to face right
+                    spriteRenderer.flipY = false;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                } // Reset rotation
+                else if (SceneManager.GetActiveScene().name.Contains("Chapter1"))
+                {
+                    Debug.Log("Phase2");
+                    transform.position = new Vector3(7f, 0f, 0);
+                    spriteRenderer.flipX = true; // Flip to face right
+                    spriteRenderer.flipY = false;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
 
                 }
                 break;
@@ -139,7 +139,7 @@ public class BossController : MonoBehaviour,IDamageable
                 Debug.Log("Phase3");
 
                 TransitionToPhase3();
-              
+
                 break;
 
             case 4:
@@ -176,22 +176,23 @@ public class BossController : MonoBehaviour,IDamageable
 
     public void BossAttack()
     {
-        if(bossAttack!=null)
+        if (bossAttack != null)
         {
-        Instantiate(bossAttack, new Vector2(0f, 1.44f), Quaternion.identity);
+            Instantiate(bossAttack, new Vector2(0f, 1.44f), Quaternion.identity);
         }
 
     }
 
     private void TransitionToPhase3()
-    {    if (SceneManager.GetActiveScene().name.Contains("InGame"))
+    {
+        if (SceneManager.GetActiveScene().name.Contains("InGame"))
         {
-            frontBossPosition=new Vector3(0f,4.0f,0f);
+            frontBossPosition = new Vector3(0f, 4.0f, 0f);
         }
-         if (SceneManager.GetActiveScene().name.Contains("Chapter1"))
-         {
-               frontBossPosition=new Vector3(0f,3.18f,0f);
-         }
+        if (SceneManager.GetActiveScene().name.Contains("Chapter1"))
+        {
+            frontBossPosition = new Vector3(0f, 3.18f, 0f);
+        }
         // Instantiate the new prefab at the current position and rotation
         GameObject newBoss = Instantiate(phase3Prefab, frontBossPosition, transform.rotation);
 
@@ -283,7 +284,7 @@ public class BossController : MonoBehaviour,IDamageable
     //        Debug.Log("PoisonIncrease" + PoisonDamage);
     //    }
     //    yield return new WaitForSeconds(interval);
-      
+
     //}
 
 }

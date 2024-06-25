@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PressDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-   
+
     static float pressStartTime;
     private const float PressDurationThreshold = 0.5f;
     public void OnPointerDown(PointerEventData eventData)
@@ -21,16 +21,16 @@ public class PressDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         Debug.Log(pressDuration);
         if (pressDuration >= PressDurationThreshold)
         {
-            Debug.Log("Press detected"+gameObject);
-            if(gameObject.name=="Chapter0")
+            Debug.Log("Press detected" + gameObject);
+            if (gameObject.name == "Chapter0")
             { LoadTutorialScene(); }
 
-            else if (gameObject.name=="Chapter1")
+            else if (gameObject.name == "Chapter1")
             {
-                LoadChapter1Scene(); 
+                LoadChapter1Scene();
             }
 
-            
+
         }
         else
         {
@@ -42,7 +42,7 @@ public class PressDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private bool IsPointerOverUIObject(GameObject uiObject, PointerEventData eventData)
     {
         return eventData.pointerCurrentRaycast.gameObject == uiObject;
-        
+
     }
 
     private void LoadTutorialScene()

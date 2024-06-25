@@ -15,12 +15,12 @@ public class SettingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void onclickexit(Button button)
     {
-        if(button == exit)
+        if (button == exit)
         {
             this.gameObject.SetActive(false);
         }

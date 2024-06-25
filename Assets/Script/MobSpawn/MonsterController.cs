@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public enum MonsterType { Basic, Enhanced}
+public enum MonsterType { Basic, Enhanced }
 
 public class MonsterController : MonoBehaviour, IDamageable
 {
@@ -22,7 +22,7 @@ public class MonsterController : MonoBehaviour, IDamageable
     {
         speed *= RoundRewardSystem.globalSpeedModifier;
         originalSpeed = speed;
-        
+
         gameManager = GameManager.Instance;
         MaxHp = Hp;
     }
@@ -43,7 +43,7 @@ public class MonsterController : MonoBehaviour, IDamageable
                     Die();// 
                 }
             }
-            
+
         }
     }
 
@@ -80,18 +80,18 @@ public class MonsterController : MonoBehaviour, IDamageable
 
     public void Execute(float ExecuteHpRate)
     {
-        
+
         float Hprate = Hp / MaxHp;
-        
-       
+
+
         if (Hprate <= ExecuteHpRate)
         {
             Debug.Log("Execute");
             StartCoroutine(ApplyExecute());
-            
+
         }
-       
-        
+
+
     }
 
 
@@ -102,7 +102,7 @@ public class MonsterController : MonoBehaviour, IDamageable
 
         Debug.Log("Execute");
         yield return new WaitForSeconds(0.3f);
-        
+
         if (currentExecuteEffect != null)
         {
             Destroy(currentExecuteEffect);
@@ -114,7 +114,7 @@ public class MonsterController : MonoBehaviour, IDamageable
             Die();
         }
 
-        
+
     }
     //public void DecreaseSpeed(float reductionAmount)
     //{
@@ -132,8 +132,9 @@ public class MonsterController : MonoBehaviour, IDamageable
         Hp -= damage;  // Subtract damage from HP
         Debug.Log(Hp);
         // Check if the monster's HP is zero or below
-        if (Hp <= 0f && !isDead )
-        {  isDead = true;
+        if (Hp <= 0f && !isDead)
+        {
+            isDead = true;
             Die();  // If yes, trigger the Die method
         }
     }
@@ -153,14 +154,14 @@ public class MonsterController : MonoBehaviour, IDamageable
         }
     }
 
-    public void EnhancedPoisonStack(float Percentage,float Damage) //If Lily isPrestige
+    public void EnhancedPoisonStack(float Percentage, float Damage) //If Lily isPrestige
     {
-        poisonStacks = Mathf.Min(poisonStacks + 1, maxPoisonStacks); 
+        poisonStacks = Mathf.Min(poisonStacks + 1, maxPoisonStacks);
         PoisonDamage = Damage;
-        if (poisonStacks == 1)  
+        if (poisonStacks == 1)
         {
-            StartCoroutine(EnhancedPoisonDamageRoutine(Percentage,Damage));
-            
+            StartCoroutine(EnhancedPoisonDamageRoutine(Percentage, Damage));
+
         }
     }
     private IEnumerator EnhancedPoisonDamageRoutine(float Percentage, float Damage)
@@ -169,7 +170,7 @@ public class MonsterController : MonoBehaviour, IDamageable
         while (poisonStacks > 0)
         {
             yield return new WaitForSeconds(1.0f); // Every 1 second
-             if(IncreaseCount<=10)
+            if (IncreaseCount <= 10)
             {
                 Percentage += 0.01f;
                 IncreaseCount++;
@@ -178,8 +179,8 @@ public class MonsterController : MonoBehaviour, IDamageable
             }
             for (int i = 0; i < poisonStacks; i++)
             {
-                TakeDamage(Percentage*Damage);
-                Debug.Log("poisonDamage" +Percentage*Damage);
+                TakeDamage(Percentage * Damage);
+                Debug.Log("poisonDamage" + Percentage * Damage);
             }
         }
     }
@@ -189,7 +190,7 @@ public class MonsterController : MonoBehaviour, IDamageable
         while (poisonStacks > 0)
         {
             yield return new WaitForSeconds(1.0f); // Every 1 second
-            
+
             for (int i = 0; i < poisonStacks; i++)
             {
                 TakeDamage(PoisonDamage);
@@ -201,11 +202,11 @@ public class MonsterController : MonoBehaviour, IDamageable
     void Die()
     {
 
-        
+
         if (this.gameObject != null)
         {
             gameManager.OnMonsterDestroyed();
-            Destroy(gameObject); 
+            Destroy(gameObject);
 
         }
         else

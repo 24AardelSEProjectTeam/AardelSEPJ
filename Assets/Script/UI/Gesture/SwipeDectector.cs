@@ -20,13 +20,13 @@ public class SwipeDetector : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void DetectSwipe()
     {
-        
+
         Vector2 direction = endTouchPosition - startTouchPosition;
         if (direction.magnitude > someThreshold) // someThreshold = Minimum distance for swipe
         {
             Debug.Log("Swiped " + direction);
 
-            
+
             // swipe logics
         }
     }

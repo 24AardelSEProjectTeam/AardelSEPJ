@@ -16,7 +16,7 @@ public class Squad_UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-         
+
         }
         else if (Instance == this)
         {
@@ -87,7 +87,7 @@ public class Squad_UIManager : MonoBehaviour
                     {
                         unitThumbnails[i].sprite = unitData.thumbnailSprite;
                         unitThumbnails[i].color = new Color(unitThumbnails[i].color.r, unitThumbnails[i].color.g, unitThumbnails[i].color.b, 1);
-                        
+
                     }
                 }
                 else
@@ -128,7 +128,7 @@ public class Squad_UIManager : MonoBehaviour
             if (leaderUnit != null)
             {
                 standingImage.sprite = leaderUnit.standingSprite; // 
-                standingImage.color=new Color(standingImage.color.r,standingImage.color.g,standingImage.color.b, 1);
+                standingImage.color = new Color(standingImage.color.r, standingImage.color.g, standingImage.color.b, 1);
             }
             else
             {
@@ -139,7 +139,7 @@ public class Squad_UIManager : MonoBehaviour
         }
     }
 
-   
+
 
 
 

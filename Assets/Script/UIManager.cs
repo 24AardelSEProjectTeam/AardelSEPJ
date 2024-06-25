@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    
+
 
     public Text usernameText;
     public Text levelText;
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-           
+
         }
         else
         {
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         UpdateUI();
-        
+
     }
 
     void Update()
@@ -45,11 +45,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        usernameText.text = "ÀÌÁØÈ£";
+        usernameText.text = "ï¿½ï¿½ï¿½ï¿½È£";
         levelText.text = "99";
-        expBar.value = (experience/100.0f);
+        expBar.value = (experience / 100.0f);
         userImage.sprite = profileUserImage.sprite;
-        userImage.color=profileUserImage.color;
+        userImage.color = profileUserImage.color;
     }
 
     public void TogglePopupPanel()
@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    
+
 }
 
 

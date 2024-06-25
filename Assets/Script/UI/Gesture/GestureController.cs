@@ -90,8 +90,8 @@ public class GestureController : MonoBehaviour
                     break;
 
                     // Reset selected object after dragging
-                   
-                   
+
+
             }
         }
     }

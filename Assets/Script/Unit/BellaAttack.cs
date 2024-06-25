@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BellaAttack : MonoBehaviour
 {
-    public float attackDamage ;
+    public float attackDamage;
     public float attackSpeed = 1.0f;
     public GameObject projectilePrefab;
-    private Unit unitScript;  
+    private Unit unitScript;
 
     float ExecuteHpRate = 0.3f;
     float UnconditionalExecutionRate;
@@ -16,15 +16,15 @@ public class BellaAttack : MonoBehaviour
     private float nextAttackTime = 0f;
     private BellaPrestige bellapretige;
 
-    
 
-  public static bool isSpecialA=false;
 
-   public static bool isSpecialB=false;
-    
+    public static bool isSpecialA = false;
 
-    bool isBoolA=false;
-     bool isBoolB=false;
+    public static bool isSpecialB = false;
+
+
+    bool isBoolA = false;
+    bool isBoolB = false;
 
     private void Awake()
     {
@@ -37,15 +37,15 @@ public class BellaAttack : MonoBehaviour
     void Start()
     {
 
-         unitScript = GetComponent<Unit>();
-        attackDamage=unitScript.attackPower;
+        unitScript = GetComponent<Unit>();
+        attackDamage = unitScript.attackPower;
 
-          if (unitScript != null)
+        if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged += UpdateDamage;
             unitScript.OnAttackSpeedChanged += UpdateSpeed;
             attackDamage = unitScript.AttackPower; // Initialize with current attack damage
-            attackSpeed =unitScript.AttackSpeed;
+            attackSpeed = unitScript.AttackSpeed;
             Debug.Log("Subscribed to OnAttackDamageChanged");
         }
         attackInterval = 1f / attackSpeed;
@@ -57,25 +57,26 @@ public class BellaAttack : MonoBehaviour
 
         }
 
-       if(isSpecialA && unitScript.unitLevel>=3)
+        if (isSpecialA && unitScript.unitLevel >= 3)
         {
             SpecialA();
-            isBoolA=true;
+            isBoolA = true;
         }
 
-        if(isSpecialA && unitScript.unitLevel==5)
+        if (isSpecialA && unitScript.unitLevel == 5)
         {
             SpecialB();
-            isBoolB=true;
+            isBoolB = true;
         }
 
-       
-       
-       
+
+
+
     }
 
     void Update()
-    {   attackInterval = 1f / attackSpeed;
+    {
+        attackInterval = 1f / attackSpeed;
         if (Time.time >= nextAttackTime)
         {
             // Find the closest target that is attackable
@@ -83,7 +84,7 @@ public class BellaAttack : MonoBehaviour
             if (target != null && Time.time >= nextAttackTime)
             {
                 FireProjectile(target);
-                
+
                 nextAttackTime = Time.time + attackInterval;
 
                 //MonsterController monster = target.GetComponent<MonsterController>();
@@ -96,13 +97,13 @@ public class BellaAttack : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            isSpecialB=true;
+            isSpecialB = true;
             // SpecialB();
         }
 
-        
+
 
     }
 
@@ -134,48 +135,48 @@ public class BellaAttack : MonoBehaviour
         bellaProjectile.GetComponent<BellaProjectile>().target = target;
         bellaProjectile.GetComponent<BellaProjectile>().damage = attackDamage;
 
-        
+
     }
 
     void TryExecute(GameObject target)
     {
         Unit unitScript = GetComponent<Unit>();
 
-        if(!isBoolA&&isSpecialA&&unitScript.unitLevel>=3)
-      {
-        Debug.Log("SpecialA");
-        SpecialA();
-        isBoolA=true;
-      }
+        if (!isBoolA && isSpecialA && unitScript.unitLevel >= 3)
+        {
+            Debug.Log("SpecialA");
+            SpecialA();
+            isBoolA = true;
+        }
 
-       if(!isBoolB&&isSpecialB&&unitScript.unitLevel==5)
-      {
-        Debug.Log("SpecialB");
-        SpecialB();
-        isBoolA=true;
-      }
+        if (!isBoolB && isSpecialB && unitScript.unitLevel == 5)
+        {
+            Debug.Log("SpecialB");
+            SpecialB();
+            isBoolA = true;
+        }
 
-        
+
         MonsterController monsterscript = target.GetComponent<MonsterController>();
         //if(monsterscript != null)
         //{
         //    return;
         //}
-        
-        
-        Debug.Log("Executerate"+ExecuteHpRate);
-       
-         
-            
-          
-            
-            if (Random.value <= UnconditionalExecutionRate)
-                monsterscript.Execute(1.0f);
 
-            else
-                monsterscript.Execute(ExecuteHpRate);
 
-       
+        Debug.Log("Executerate" + ExecuteHpRate);
+
+
+
+
+
+        if (Random.value <= UnconditionalExecutionRate)
+            monsterscript.Execute(1.0f);
+
+        else
+            monsterscript.Execute(ExecuteHpRate);
+
+
         // else if (unitScript.unitLevel == 5)
         // {
         //     ExecuteHpRate = 0.45f;
@@ -183,12 +184,12 @@ public class BellaAttack : MonoBehaviour
         // }
     }
 
-    
-private void UpdateDamage(float newDamage)
+
+    private void UpdateDamage(float newDamage)
     {
         attackDamage = newDamage;
         // Additional logic to handle damage change
-        Debug.Log("UPdateDamageKali"+attackDamage);
+        Debug.Log("UPdateDamageKali" + attackDamage);
 
         bellapretige.UpdateStrongestBella();
     }
@@ -196,21 +197,21 @@ private void UpdateDamage(float newDamage)
     private void UpdateSpeed(float newSpeed)
     {
         Debug.Log($"Before increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
-    // Logic to increase AttackSpeed
-        attackSpeed=newSpeed;
-         Debug.Log("UPdateSpeedKali"+attackSpeed);
+        // Logic to increase AttackSpeed
+        attackSpeed = newSpeed;
+        Debug.Log("UPdateSpeedKali" + attackSpeed);
 
-           Debug.Log($"After increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
+        Debug.Log($"After increase: AttackSpeed = {attackSpeed}, AttackDamage = {attackDamage}");
 
     }
 
-  void OnDestroy()
+    void OnDestroy()
     {
         if (unitScript != null)
         {
             unitScript.OnAttackDamageChanged -= UpdateDamage;
             unitScript.OnAttackSpeedChanged -= UpdateSpeed;
-            
+
         }
     }
 
@@ -228,11 +229,11 @@ private void UpdateDamage(float newDamage)
 
     public void SpecialA()
     {
-        UnconditionalExecutionRate=0.05f;
+        UnconditionalExecutionRate = 0.05f;
     }
     public void SpecialB()
     {
-        ExecuteHpRate+=0.15f;
-         
+        ExecuteHpRate += 0.15f;
+
     }
 }
