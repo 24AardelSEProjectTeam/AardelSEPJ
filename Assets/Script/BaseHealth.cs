@@ -15,7 +15,7 @@ public class BaseHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage; 
-        Debug.Log("���� ���� ü��" + currentHealth);
+        Debug.Log("Current Health" + currentHealth);
        
         if (currentHealth <= 0)
         {

@@ -57,12 +57,12 @@ public class UIManager : MonoBehaviour
         if (popupPanel.activeSelf)
         {
             popupPanel.SetActive(false);
-            Time.timeScale = 1; // 게임 재개
+            Time.timeScale = 1; // game restart
         }
         else
         {
             popupPanel.SetActive(true);
-            Time.timeScale = 0; // 게임 일시 정지
+            Time.timeScale = 0; // game pause
         }
     }
 
