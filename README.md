@@ -74,6 +74,9 @@
   - UI/UX 홍정기
   - 적대적 몬스터 디자인 김준혁
 
-## :page_facing_up: 설치 방법
+## 📥 다운로드
 
-- 릴리즈 파일 다운로드
+### 🆕 최신 버전 다운로드
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/24AardelSEProjectTeam/AardelSEPJ?include_prereleases&style=for-the-badge)](https://github.com/24AardelSEProjectTeam/AardelSEPJ/releases/latest)
+
+
