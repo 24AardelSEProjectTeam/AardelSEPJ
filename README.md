@@ -76,4 +76,4 @@
 
 ## :page_facing_up: 설치 방법
 
-- Contributing.md 파일 참조
+- 릴리즈 파일 다운로드
